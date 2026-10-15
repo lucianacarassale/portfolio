@@ -53,16 +53,17 @@
     bg.style.backgroundColor = p.tone || '#111111';
     bgLabel.textContent = '';
     if (bgMedia) { bgMedia.remove(); bgMedia = null; }
-    if (p.cover) {
-      bgMedia = document.createElement(LC.isVideo(p.cover) ? 'video' : 'img');
+    var bgSrc = p.hover || p.cover;
+    if (bgSrc) {
+      bgMedia = document.createElement(LC.isVideo(bgSrc) ? 'video' : 'img');
       if (bgMedia.tagName === 'VIDEO') {
         bgMedia.muted = true; bgMedia.loop = true; bgMedia.autoplay = true; bgMedia.playsInline = true;
         /* Arranca en el mismo punto que la miniatura, así no salta */
         var thumb = grid.querySelector('[data-i="' + i + '"] video');
-        bgMedia.src = p.cover;
-        if (thumb) bgMedia.currentTime = thumb.currentTime;
+        bgMedia.src = bgSrc;
+        if (thumb && bgSrc === p.cover) bgMedia.currentTime = thumb.currentTime;
       } else {
-        bgMedia.src = p.cover;
+        bgMedia.src = bgSrc;
         bgMedia.alt = '';
       }
       bg.appendChild(bgMedia);

@@ -665,12 +665,27 @@ window.MEDIA = {
     "hero": "images/projects/09 New York Times - Bad Bunny/web/01.jpg",
     "gallery": [
       {
-        "type": "framed",
+        "type": "row",
         "src": [
-          "images/projects/09 New York Times - Bad Bunny/web/02.jpg"
+          "images/projects/09 New York Times - Bad Bunny/web/02.jpg",
+          "images/projects/09 New York Times - Bad Bunny/web/03.jpg",
+          "images/projects/09 New York Times - Bad Bunny/web/04.jpg"
         ],
         "ratio": [
-          0.6004
+          0.6004,
+          0.6768,
+          0.6768
+        ]
+      },
+      {
+        "type": "row",
+        "src": [
+          "images/projects/09 New York Times - Bad Bunny/web/05.jpg",
+          "images/projects/09 New York Times - Bad Bunny/web/06.jpg"
+        ],
+        "ratio": [
+          0.6768,
+          0.6768
         ]
       }
     ],
@@ -682,6 +697,22 @@ window.MEDIA = {
       "02": {
         "src": "images/projects/09 New York Times - Bad Bunny/web/02.jpg",
         "ratio": 0.6004
+      },
+      "03": {
+        "src": "images/projects/09 New York Times - Bad Bunny/web/03.jpg",
+        "ratio": 0.6768
+      },
+      "04": {
+        "src": "images/projects/09 New York Times - Bad Bunny/web/04.jpg",
+        "ratio": 0.6768
+      },
+      "05": {
+        "src": "images/projects/09 New York Times - Bad Bunny/web/05.jpg",
+        "ratio": 0.6768
+      },
+      "06": {
+        "src": "images/projects/09 New York Times - Bad Bunny/web/06.jpg",
+        "ratio": 0.6768
       }
     }
   },

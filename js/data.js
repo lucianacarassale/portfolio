@@ -51,6 +51,9 @@ window.SITE = {
   hero: 'none'        → la 01 queda solo como portada de la grilla, adentro no aparece
   layoutMobile: [...] → otro orden solo para celular (mismo formato que layout)
   bg: '#1A1A1A'       → color de fondo de la página del proyecto
+  hover: 'images/...' → imagen de fondo al pasar el mouse en Works/Index (si no, usa la portada)
+  Fotos separadas con nombre y lugar abajo:
+                      { tarjetas: '03 04', nombres: ['Eric Rojas', ...], lugares: ['Cabo Rojo', ...] }
   Texto dentro del layout:            { texto: ['párrafo 1', 'párrafo 2'] }
   info: { campaign, year, rol, agency, text } → ficha al final del proyecto
                     (CAMPAIGN / ROL / AGENCY + descripción). Si un dato está vacío, se ve [entre corchetes].
@@ -134,7 +137,13 @@ window.PROJECTS = [
         'Ballerina is not a silhouette made to master any specific genre, but for those who seek to connect with something deeper.'
     } },
   { slug: 'new-york-times',   title: 'New York Times',   collab: 'Bad Bunny',            client: 'adidas Originals', role: 'Backcover Art',         tone: '#77746E', cover: '', hero: 'none', gallery: [],
-    layout: ['completa 02'],
+    hover: 'images/projects/09 New York Times - Bad Bunny/web/02.jpg',
+    layout: [
+      'completa 02',
+      { tarjetas: '03 04 06 05',
+        nombres: ['Eric Rojas', 'Joshua Santiago', 'Quique Cabanillas', 'Cezanne Cardone'],
+        lugares: ['Cabo Rojo', 'Santurce', 'El Yunque', 'Vega Baja'] }
+    ],
     info: {
       campaign: 'New York Times / Back Cover Design',
       year: '2026',
@@ -168,7 +177,7 @@ window.PROJECTS = [
         'It works both as a narrative object and as a catalog of the collaboration.' + '\n\n' +
         'Many fans have dedicated countless tweets, comments, signs, and letters to Leo and Benito: expressions of love that apply to both of them. Through a letter created based on comments from Instagram, YouTube, and X (Twitter), we will highlight the impact they have on their true fans. The idea is to bring forward the infinite love people express to them, in their own voices.'
     } },
-  { slug: 'adizero-sl72',     title: 'adidas para Bad Bunny - Adizero SL72 ’24', collab: '', client: 'adidas Originals', role: 'Art Direction 2D & 3D', tone: '#4A4640', cover: '', hero: '', gallery: [],
+  { slug: 'adizero-sl72',     title: 'Adizero SL72', collab: 'Bad Bunny', client: 'adidas Originals', role: 'Art Direction 2D & 3D', tone: '#4A4640', cover: '', hero: '', gallery: [],
     bg: '#1A1A1A',
     layout: [
       'fila 02 03 04',

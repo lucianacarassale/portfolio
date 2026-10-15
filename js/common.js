@@ -21,6 +21,16 @@
         out.push({ type: 'text', text: [].concat(line.texto) });
         return;
       }
+      /* Fotos separadas con nombre y lugar: { tarjetas: '03 04', nombres: [...], lugares: [...] } */
+      if (line && line.tarjetas) {
+        var cs = [];
+        String(line.tarjetas).trim().split(/\s+/).forEach(function (w, k) {
+          var f = files[w.padStart(2, '0')];
+          if (f) cs.push({ src: f.src, name: (line.nombres || [])[k] || '', place: (line.lugares || [])[k] || '' });
+        });
+        if (cs.length) out.push({ type: 'cards', cards: cs });
+        return;
+      }
       /* Fila con etiquetas abajo de cada foto: { fila: '06 07 08', etiquetas: ['Active', ...] } */
       var captions = null;
       if (line && typeof line === 'object') {

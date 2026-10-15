@@ -104,28 +104,28 @@ html:has(body.page-intro) { overflow-x: hidden; } /* al centrar la composición 
 .page-intro .site-head { position: absolute; top: 0; left: 0; right: 0; }
 .page-intro .home { flex: 1 1 auto; cursor: pointer; }
 
-/* Composición del inicio. Las medidas salen del diseño (pantalla de 1546 px) en "unidades"
+/* Composición del inicio. Las medidas salen del diseño (pantalla de 1920 px) en "unidades"
    (--u = 1vw en el diseño). En pantallas cuadradas o verticales un script agranda --u y
    corre todo con --dx / --dy para que quede centrado. */
 .page-intro { --u: 1vw; --dx: 0px; --dy: 0px; }
-.home-comp { position: relative; height: max(100svh - 60px, calc(52 * var(--u) + var(--dy))); }
+.home-comp { position: relative; height: max(100svh - 60px, calc(54 * var(--u) + var(--dy))); }
 .home-comp > * { position: absolute; margin: 0; }
-.home-sig { left: calc(8.7 * var(--u) + var(--dx)); top: calc(7.4 * var(--u) + var(--dy)); width: calc(40.4 * var(--u)); pointer-events: none; }
+.home-sig { left: calc(5.36 * var(--u) + var(--dx)); top: calc(6.51 * var(--u) + var(--dy)); width: calc(47.8 * var(--u)); pointer-events: none; }
 .home-sig-img { width: 100%; height: auto; }
-.home-photo { left: calc(41.66 * var(--u) + var(--dx)); top: calc(25 * var(--u) + var(--dy)); width: calc(16.56 * var(--u)); height: auto; aspect-ratio: 1 / 1; object-fit: cover; filter: grayscale(1); z-index: 2; }
-.home-services { list-style: none; padding: 0; z-index: 2; left: calc(20.3 * var(--u) + var(--dx)); transform: translateX(-50%); text-align: center; text-transform: uppercase; font-weight: 600; font-size: max(10px, calc(0.97 * var(--u))); line-height: 1.25; white-space: nowrap; }
-.home-services--a { top: calc(32.3 * var(--u) + var(--dy)); }
-.home-services--b { top: calc(46.4 * var(--u) + var(--dy)); }
-.home-note { left: calc(14.75 * var(--u) + var(--dx)); top: calc(35.9 * var(--u) + var(--dy)); width: max(56px, calc(4.6 * var(--u))); z-index: 1; font-size: max(6px, calc(0.5 * var(--u))); line-height: 1.25; font-weight: 600; text-transform: uppercase; color: #C8C8C8; }
+.home-photo { left: calc(46.3 * var(--u) + var(--dx)); top: calc(27.29 * var(--u) + var(--dy)); width: calc(11.77 * var(--u)); height: auto; aspect-ratio: 1 / 1; object-fit: cover; filter: grayscale(1); z-index: 2; }
+.home-services { list-style: none; padding: 0; z-index: 2; left: calc(20.1 * var(--u) + var(--dx)); transform: translateX(-50%); text-align: center; text-transform: uppercase; font-weight: 600; font-size: max(10px, calc(1.04 * var(--u))); line-height: 1.25; white-space: nowrap; }
+.home-services--a { top: calc(33.6 * var(--u) + var(--dy)); }
+.home-services--b { top: calc(49 * var(--u) + var(--dy)); }
+.home-note { left: calc(14.06 * var(--u) + var(--dx)); top: calc(37.3 * var(--u) + var(--dy)); width: max(56px, calc(4.95 * var(--u))); z-index: 1; font-size: max(6px, calc(0.57 * var(--u))); line-height: 1.25; font-weight: 600; text-transform: uppercase; color: #C8C8C8; }
 /* Líneas punteadas (posiciones del diseño) */
 .home-lines { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .hl-v { position: absolute; top: 0; bottom: 0; border-left: 1px dashed #C4C4C4; }
-.hl-1 { left: calc(14.42 * var(--u) + var(--dx)); }
-.hl-2 { left: calc(15.39 * var(--u) + var(--dx)); }
-.hl-3 { left: calc(44.57 * var(--u) + var(--dx)); }
-.hl-4 { left: calc(55.37 * var(--u) + var(--dx)); }
-.hl-h { position: absolute; top: calc(31.7 * var(--u) + var(--dy)); left: calc(14.42 * var(--u) + var(--dx)); width: calc(27.24 * var(--u)); border-top: 1px dashed #C4C4C4; }
-.home-works { left: calc(50 * var(--u) + var(--dx)); top: calc(48.6 * var(--u) + var(--dy)); font-size: max(12px, calc(1.03 * var(--u))); font-weight: 600; white-space: nowrap; }
+.hl-1 { left: calc(13.7 * var(--u) + var(--dx)); }
+.hl-2 { left: calc(14.74 * var(--u) + var(--dx)); }
+.hl-3 { left: calc(46.4 * var(--u) + var(--dx)); }
+.hl-4 { left: calc(57.19 * var(--u) + var(--dx)); }
+.hl-h { position: absolute; top: calc(33.12 * var(--u) + var(--dy)); left: calc(13.7 * var(--u) + var(--dx)); width: calc(32.6 * var(--u)); border-top: 1px dashed #C4C4C4; }
+.home-works { left: calc(52.24 * var(--u) + var(--dx)); top: calc(51.5 * var(--u) + var(--dy)); font-size: max(12px, calc(1.04 * var(--u))); font-weight: 600; white-space: nowrap; }
 .home-works span { display: inline-block; margin-left: 0.3em; transition: transform 200ms ease; }
 .home-works:hover { opacity: 1; }
 .home-works:hover span { transform: translateX(4px); }
@@ -284,6 +284,12 @@ body.is-hovering .is-current .label { color: #FFFFFF; }
 .g-text p:last-child { margin-bottom: 0; }
 /* Después de una imagen enmarcada, el texto no suma su espacio de arriba (ya lo da el marco) */
 .g-framed + .g-text { padding-top: 0; }
+/* Fotos separadas con nombre (izq.) y lugar (der.) abajo — New York Times */
+.g-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2vw; padding: 10vh 2.9vw; }
+.g-card { margin: 0; }
+.g-card .media { aspect-ratio: 0.677; }
+.g-card figcaption { display: flex; justify-content: space-between; gap: 8px; margin-top: 10px; font-size: 13px; }
+.g-card-place { text-transform: uppercase; text-align: right; }
 
 .p-next { padding: clamp(200px, 22vw, 320px) var(--pad) 40px; }
 .p-next .label { font-size: 15px; }
@@ -359,6 +365,8 @@ body.is-hovering .is-current .label { color: #FFFFFF; }
   .g-single .media { width: 100%; }
   .g-framed { padding: 8svh 16px; }
   .g-text { padding: 10svh 24px; }
+  .g-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; padding: 8svh 16px; }
+  .g-card figcaption { font-size: 11px; }
   .g-row--wrap { flex-wrap: wrap; }
   .g-row--wrap .g-cell { flex: 0 0 50% !important; aspect-ratio: 4 / 5 !important; }
   .g-row--stack { flex-direction: column; }

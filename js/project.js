@@ -76,6 +76,11 @@
       html += b.type === 'row'
         ? '<div class="' + rowCls + '">' + cells + '</div>'
         : '<div class="g-framed"' + style + '><div class="g-row">' + cells + '</div></div>';
+    } else if (b.type === 'cards') {
+      html += '<div class="g-cards">' + b.cards.map(function (c) {
+        return '<figure class="g-card">' + LC.media(c.src, tone(), 'Image', '', c.name) +
+          '<figcaption><span>' + LC.esc(c.name) + '</span><span class="g-card-place">' + LC.esc(c.place) + '</span></figcaption></figure>';
+      }).join('') + '</div>';
     } else if (b.type === 'text') {
       html += '<div class="g-text"><div>' + b.text.map(function (t) { return '<p>' + LC.esc(t) + '</p>'; }).join('') + '</div></div>';
     } else if (b.type === 'single') {
