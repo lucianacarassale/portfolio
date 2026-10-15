@@ -8,7 +8,7 @@ window.SITE = {
   email: 'lucianacarassale@gmail.com',
   instagram: '',          // ej: 'lucianacarassale' (sin @)
   linkedin: 'https://www.linkedin.com/in/lucianacarassale/',
-  cvFile: 'cv/Luciana-Carassale-CV.pdf',   // poné tu CV en PDF en la carpeta cv/ con este nombre
+  cvFile: 'cv/CV - DG - Luciana Carassale.pdf',   // tu CV en PDF, dentro de la carpeta cv/
   agency: { name: 'newcycle', url: 'https://www.instagram.com/newcycle/' },
   year: 2026
 };

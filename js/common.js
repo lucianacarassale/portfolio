@@ -139,6 +139,24 @@
   }
   var counts = document.querySelectorAll('[data-count]');
   for (var c = 0; c < counts.length; c++) counts[c].textContent = 'Works [' + (window.PROJECTS || []).length + ']';
+  /* Al hacer clic en el email: se abre el correo (mailto) y además se copia la dirección,
+     por si quien visita no tiene una app de correo configurada (ej. usa Gmail en el navegador). */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="mailto:"]');
+    if (!a || !site.email || !navigator.clipboard) return;
+    navigator.clipboard.writeText(site.email).then(function () {
+      var tip = document.createElement('span');
+      tip.className = 'copied-tip';
+      tip.textContent = 'Email copied';
+      var r = a.getBoundingClientRect();
+      tip.style.left = Math.min(r.left, window.innerWidth - 120) + 'px';
+      tip.style.top = (r.top - 26 < 8 ? r.bottom + 6 : r.top - 26) + 'px';
+      document.body.appendChild(tip);
+      setTimeout(function () { tip.classList.add('is-out'); }, 1400);
+      setTimeout(function () { tip.remove(); }, 1800);
+    }).catch(function () {});
+  });
+
   var years = document.querySelectorAll('[data-year]');
   for (var y = 0; y < years.length; y++) years[y].textContent = '©' + (site.year || new Date().getFullYear());
 })();

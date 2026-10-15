@@ -35,7 +35,12 @@
   var li = document.querySelector('[data-linkedin]');
   if (li) { if (site.linkedin) li.href = site.linkedin; else li.remove(); }
   var cvLink = document.querySelector('[data-cv-file]');
-  if (cvLink) { if (site.cvFile) cvLink.href = site.cvFile; else cvLink.remove(); }
+  if (cvLink) {
+    if (site.cvFile) {
+      cvLink.href = encodeURI(site.cvFile);
+      cvLink.setAttribute('download', 'Luciana-Carassale-CV.pdf');  /* nombre con el que se guarda */
+    } else cvLink.remove();
+  }
 
   /* ---- Efecto: fondo a pantalla completa al pasar el mouse ---- */
   var current = null;

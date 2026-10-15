@@ -52,6 +52,10 @@ img, video { display: block; max-width: 100%; }
 .clock { padding: 4px 0; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .is-active { text-decoration: underline; text-underline-offset: 3px; }
 
+/* Aviso "Email copied" */
+.copied-tip { position: fixed; z-index: 10; padding: 4px 8px; background: #111111; color: #FFFFFF; font-size: 11px; letter-spacing: 0.02em; pointer-events: none; transition: opacity 300ms ease; }
+.copied-tip.is-out { opacity: 0; }
+
 /* ---------- Footer ---------- */
 
 .site-foot {
