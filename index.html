@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Luciana Carassale — Graphic Designer &amp; Art Director</title>
+  <meta name="description" content="Luciana Carassale is a Graphic Designer, Art Director and Creative Director based in Buenos Aires.">
+  <meta property="og:title" content="Luciana Carassale">
+  <meta property="og:description" content="Graphic Designer, Art Director and Creative Director based in Buenos Aires.">
+  <meta property="og:image" content="https://luuuulu.com/images/luciana-portrait.jpg">
+  <meta property="og:url" content="https://luuuulu.com/">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-intro">
+
+  <header class="site-head">
+    <a class="logo" href="index.html">luciana carassale</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="works.html#works">Works</a>
+      <span aria-hidden="true">/</span>
+      <a href="works.html#index">Index</a>
+    </nav>
+    <div class="head-right">
+      <a href="works.html#cv">CV</a>
+      <span class="clock" data-clock></span>
+    </div>
+  </header>
+
+  <!-- Líneas punteadas del diseño -->
+  <div class="home-lines" aria-hidden="true">
+    <span class="hl-v hl-1"></span><span class="hl-v hl-2"></span><span class="hl-v hl-3"></span><span class="hl-v hl-4"></span>
+    <span class="hl-h"></span>
+  </div>
+
+  <main class="home">
+    <h1 class="sr-only">Luciana Carassale — Graphic Designer, Art Director and Creative Director, Buenos Aires</h1>
+
+    <div class="home-comp">
+      <div class="home-sig">
+        <img class="home-sig-img" src="images/firma.png" alt="Luciana Carassale" width="1756" height="896">
+      </div>
+
+      <img class="home-photo" src="images/luciana-portrait.jpg" alt="Portrait of Luciana Carassale" width="660" height="662">
+
+      <ul class="home-services home-services--a">
+        <li>Graphic Design</li>
+        <li>Visual Identity</li>
+        <li>Art Direction</li>
+        <li>Experiential Design</li>
+      </ul>
+
+      <p class="home-note">Creating visual worlds through art direction, design and storytelling, from creative campaigns to brand experiences.</p>
+
+      <ul class="home-services home-services--b">
+        <li>Creative Direction</li>
+        <li>Brand Storytelling</li>
+        <li>Editorial Design</li>
+      </ul>
+
+      <a class="home-works" href="works.html#works">Works <span aria-hidden="true">→</span></a>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <a class="mail" data-mail></a>
+    <span data-count></span>
+    <span data-year></span>
+  </footer>
+
+  <script src="js/media.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    /* Inicio: un clic en cualquier parte de la composición lleva a Works
+       (el menú de arriba y el email del pie siguen funcionando aparte) */
+    document.querySelector('main.home').addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      location.href = 'works.html#works';
+    });
+
+    /* Adaptación del inicio (según tus 3 pantallas de referencia):
+       - pantalla apaisada (ancho ≥ 1.5 × alto): queda como el diseño, a la izquierda
+       - pantalla cuadrada o vertical (ancho ≤ 1.1 × alto): la composición se agranda y se centra
+       - en el medio, pasa de una a otra de a poco */
+    (function () {
+      var body = document.body;
+      /* Caja de la composición en el diseño (en unidades): x 8.7 → 58.2, y 7.4 → 50 */
+      var X0 = 8.7, BW = 49.5, Y0 = 7.4, BH = 42.6;
+      function fit() {
+        var W = window.innerWidth, H = window.innerHeight;
+        if (W <= 760) { body.style.removeProperty('--u'); body.style.removeProperty('--dx'); body.style.removeProperty('--dy'); return; }
+        var t = Math.min(1, Math.max(0, (1.5 - W / H) / (1.5 - 1.1)));
+        var uDesign = W / 100;
+        var uCentered = Math.min(0.86 * W / BW, 0.7 * (H - 60) / BH);
+        var u = uDesign + t * (uCentered - uDesign);
+        var left = (1 - t) * X0 * u + t * (W - BW * u) / 2;
+        var top = (1 - t) * Y0 * u + t * Math.max(70, (H - BH * u) / 2);
+        body.style.setProperty('--u', u + 'px');
+        body.style.setProperty('--dx', (left - X0 * u) + 'px');
+        body.style.setProperty('--dy', (top - Y0 * u) + 'px');
+      }
+      fit();
+      window.addEventListener('resize', fit);
+    })();
+  </script>
+</body>
+</html>
