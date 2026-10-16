@@ -72,7 +72,8 @@
       /* En celular: filas de 4 o más → de a 2; filas que mezclan una horizontal → una debajo de otra */
       var n = [].concat(src).length;
       var mixed = n > 1 && (b.ratio || []).some(function (r) { return r > 1.2; });
-      var rowCls = 'g-row' + (n >= 4 ? ' g-row--wrap' : mixed ? ' g-row--stack' : '');
+      var keep = p.mobileGrid === 'desktop';  /* en celular, igual que desktop */
+      var rowCls = 'g-row' + (keep ? '' : n >= 4 ? ' g-row--wrap' : mixed ? ' g-row--stack' : '');
       html += b.type === 'row'
         ? '<div class="' + rowCls + '">' + cells + '</div>'
         : '<div class="g-framed"' + style + '><div class="g-row">' + cells + '</div></div>';
@@ -82,7 +83,9 @@
           '<figcaption><span>' + LC.esc(c.name) + '</span><span class="g-card-place">' + LC.esc(c.place) + '</span></figcaption></figure>';
       }).join('') + '</div>';
     } else if (b.type === 'text') {
-      html += '<div class="g-text"><div>' + b.text.map(function (t) { return '<p>' + LC.esc(t) + '</p>'; }).join('') + '</div></div>';
+      var dark = b.bg && /^#(000|000000|1a1a1a|111111)$/i.test(b.bg);
+      html += '<div class="g-text' + (dark ? ' g-text--dark' : '') + '"' + (b.bg ? ' style="background-color:' + LC.esc(b.bg) + '"' : '') + '><div>' +
+        b.text.map(function (t) { return '<p>' + LC.esc(t) + '</p>'; }).join('') + '</div></div>';
     } else if (b.type === 'single') {
       html += '<div class="g-single">' + LC.media(src, tone(), 'Image — single') + '</div>';
     } else {
@@ -101,7 +104,7 @@
   var infoHtml = '<div class="p-info">' +
     '<div class="p-info-top">' + row('Campaign', info.campaign, 'Campaign') +
       '<span class="p-info-year">' + val(info.year, 'Year') + '</span></div>' +
-    row('Rol', info.rol, 'Rol') + row('Agency', info.agency, 'Agency') +
+    row('Role', info.rol, 'Role') + row('Agency', info.agency, 'Agency') +
     /* El texto puede tener varios párrafos (separados por un renglón vacío) */
     (info.text
       ? '<div class="p-info-text">' + String(info.text).split(/\n\s*\n/).map(function (t) { return '<p>' + LC.esc(t.trim()) + '</p>'; }).join('') + '</div>'

@@ -297,6 +297,8 @@ body.is-hovering .is-current .label { color: #FFFFFF; }
 .g-text p:last-child { margin-bottom: 0; }
 /* Después de una imagen enmarcada, el texto no suma su espacio de arriba (ya lo da el marco) */
 .g-framed + .g-text { padding-top: 0; }
+.g-text--dark { color: #FFFFFF; }
+.g-text--dark > div { font-size: 12px; line-height: 1.6; }
 /* Fotos separadas con nombre (izq.) y lugar (der.) abajo — New York Times */
 .g-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2vw; padding: 10vh 2.9vw; }
 .g-card { margin: 0; }

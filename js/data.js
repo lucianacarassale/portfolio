@@ -51,7 +51,10 @@ window.SITE = {
   hero: 'none'        → la 01 queda solo como portada de la grilla, adentro no aparece
   layoutMobile: [...] → otro orden solo para celular (mismo formato que layout)
   bg: '#1A1A1A'       → color de fondo de la página del proyecto
+  mobileGrid: 'desktop' → en celular las filas quedan igual que en desktop (no se apilan)
+  Texto con fondo:    { fondo: 'negro', texto: ['línea 1', 'línea 2'] }
   hover: 'images/...' → imagen de fondo al pasar el mouse en Works/Index (si no, usa la portada)
+  cover: '...'        → miniatura de Works hecha a mano (ej. un video en images/covers/)
   Fotos separadas con nombre y lugar abajo:
                       { tarjetas: '03 04', nombres: ['Eric Rojas', ...], lugares: ['Cabo Rojo', ...] }
   Texto dentro del layout:            { texto: ['párrafo 1', 'párrafo 2'] }
@@ -62,6 +65,22 @@ window.SITE = {
 
 window.PROJECTS = [
   { slug: 'badbo',            title: 'BadBo',            collab: 'Bad Bunny',            client: 'adidas Originals', role: 'Art Direction 2D',      tone: '#5E5A55', cover: '', hero: '', gallery: [],
+    layout: [
+      'completa 02',
+      { fondo: 'negro', texto: [
+        'No hay sueños grandes o sueños pequeños.',
+        'Para mi todos son iguales.',
+        'Está en ti cual quieres lograr primero.',
+        'Por que si, los puedes lograr todos si todos son igual de importantes para ti.',
+        'La mente tiene la capacidad de imaginar sin fin y nosotros de luchar para hacerlo realidad.',
+        'En mundo con exceso de divisiones, yo siempre busco que me puede unir más a los demás.',
+        'De niño siempre nos preguntan qué queremos ser cuando grande, como si hubiera solo una respuesta.',
+        'Yo me propuse ser todo lo que una vez soñé.',
+        '-Benito'
+      ] },
+      'fila 04 05 06',
+      'completa 07'
+    ],
     info: {
       campaign: "I'm Everything - BadBo",
       year: '2026',
@@ -69,7 +88,7 @@ window.PROJECTS = [
       agency: 'newcycle',
       text: 'Creative and visual development of the spatial concept for the launch of Benito Antonio Martínez Ocasio’s first signature shoe, the Badbo 1.0.'
     } },
-  { slug: 'love-prevails',    title: 'Love prevails',    collab: 'Willy Chavarria',      client: 'adidas Originals', role: 'Art Direction 2D & 3D', tone: '#7A6650', cover: '', hero: '', gallery: [],
+  { slug: 'love-prevails',    title: 'Love prevails',    collab: 'Willy Chavarria',      client: 'adidas Originals', role: 'Art Direction 2D & 3D', tone: '#7A6650', cover: 'images/covers/love-prevails.mp4', hover: 'images/projects/02 Love prevails - Willy Chavarria/web/01.jpg', hero: '', gallery: [],
     layout: ['fila 02 03 04', 'enmarcada 05 negro', 'fila 06 07 08'],
     info: {
       campaign: 'Love prevails',
@@ -85,8 +104,7 @@ window.PROJECTS = [
       rol: 'Art & Creative direction',
       agency: 'newcycle',
       text: 
-        'adidas Originals, Bad Bunny, and the Mercedes-AMG PETRONAS F1 Team announce the launch of the Bad Bunny Adiracer GT and the debut of the Bad Bunny Motorsport Collection, building on the historic partnership that brought Formula 1 to Puerto Rico for the first time.' + '\n\n' +
-        'adidas Originals, Bad Bunny y la Mercedes-AMG PETRONAS F1 Team anuncian el lanzamiento de las Bad Bunny Adiracer GT y el debut de la colección Bad Bunny Motorsport, dando continuidad a la histórica alianza que llevó la Fórmula 1 a Puerto Rico por primera vez.'
+        'adidas Originals, Bad Bunny, and the Mercedes-AMG PETRONAS F1 Team announce the launch of the Bad Bunny Adiracer GT and the debut of the Bad Bunny Motorsport Collection, building on the historic partnership that brought Formula 1 to Puerto Rico for the first time.'
     } },
   { slug: 'night-market',     title: 'Night Market',     collab: 'Edison Chen',          client: 'adidas Originals', role: 'Activation design',     tone: '#26324F', cover: '', hero: '', gallery: [],
     layout: ['fila 01:1.6 02', 'fila 03 04 05 06', 'fila 07:0.8 08 09 10', 'fila 11 12 13 14'],
@@ -118,6 +136,7 @@ window.PROJECTS = [
     } },
   { slug: 'july',             title: 'July',             collab: 'Edison Chen',          client: 'adidas Originals', role: 'Art Direction 2D & 3D', tone: '#56604E', cover: '', hero: '', gallery: [],
     layout: ['completa 02', 'fila 03 04', 'completa 05', 'fila 06 07', 'completa 08'],
+    mobileGrid: 'desktop',
     info: {
       campaign: 'Country Club Stan Smith',
       year: '2024',
@@ -125,8 +144,8 @@ window.PROJECTS = [
       agency: 'newcycle',
       text: 'UNETIQUETTE, we developed the creative and visual direction of a spatial experience set within the world of a Country Club. Inspired by the latest collaboration between adidas Originals and CLOT by Edison Chen, the project explored the idea of challenging traditional codes of etiquette, belonging, and exclusivity. Through unexpected interventions, immersive storytelling, and playful disruptions, we transformed familiar club spaces into environments where individuality, culture, and self-expression took center stage.'
     } },
-  { slug: 'ballerina',        title: 'Ballerina',        collab: 'Bad Bunny',            client: 'adidas Originals', role: 'Art Direction 2D & 3D', tone: '#5A3520', cover: '', hero: '', gallery: [],
-    layout: ['completa 02', 'fila 03 04', 'enmarcada 05 06 07', 'fila 08 09 10', 'enmarcada 11 12'],
+  { slug: 'ballerina',        title: 'Ballerina',        collab: 'Bad Bunny',            client: 'adidas Originals', role: 'Art Direction 2D & 3D', tone: '#5A3520', cover: 'images/projects/08 Ballerina - Bad Bunny/web/02-preview.mp4', hero: '', gallery: [],
+    layout: ['completa 02', 'completa 01', 'fila 03 04', 'enmarcada 05 06 07', 'fila 08 09 10', 'enmarcada 11 12'],
     info: {
       campaign: 'Ballerina',
       year: '2025',
@@ -149,10 +168,18 @@ window.PROJECTS = [
       year: '2026',
       rol: 'Graphic designer',
       agency: 'newcycle',
-      text: 'adidas se va pa’ PR es un homenaje al hogar de Benito Antonio Martínez Ocasio. Una oda a los paisajes de la isla. Un tributo a su cultura. Y un reconocimiento a sus artistas. A toda la gente que está en la diáspora y a los que siguen ahí.'
+      text: 'adidas se va pa’ PR is a tribute to the home of Benito Antonio Martínez Ocasio. An ode to the landscapes of the island. A tribute to its culture. And a recognition of its artists. To everyone in the diaspora and to those who are still there.'
     } },
   { slug: 'bad-bunny-messi',  title: 'Bad Bunny para Messi', collab: '',                 client: 'adidas Originals', role: 'Art Direction 2D & 3D', tone: '#6E5638', cover: '', hero: '', gallery: [],
-    info: { campaign: '', year: '', rol: '', agency: 'newcycle', text: '' } },
+    info: {
+      campaign: 'Bad Bunny para Messi',
+      year: '2024',
+      rol: 'Graphic Designer',
+      agency: 'newcycle',
+      text:
+        'The Voice of the Fans was born from the genuine love and admiration people have for Messi and Bad Bunny. We transformed real messages and comments from social media into a collective love letter, celebrating the connection between these icons and their fans.' + '\n\n' +
+        'We brought the concept to life through exclusive experiences in Miami, Puerto Rico, and Buenos Aires, where fans came together to watch the campaign and get early access to the F50s and Gazelles.'
+    } },
   { slug: 'cabo-rojo',        title: 'Cabo Rojo',        collab: 'Bad Bunny',            client: 'adidas Originals', role: 'Art Direction 2D',      tone: '#8A6E62', cover: '', hero: '', gallery: [],
     layout: ['completa 02', 'completa 03', 'fila 06 07', 'completa 05'],
     info: {
@@ -161,9 +188,9 @@ window.PROJECTS = [
       rol: 'Art & Creative direction',
       agency: 'newcycle',
       text: 
-        'Gazelle Indoor City Series rinde homenaje a los paisajes de Puerto Rico: El Yunque, Cabo Rojo, Santurce y Vega Baja.' + '\n\n' +
-        'Esta silueta toma inspiración del paisaje de Cabo Rojo, reflejado en sus tonos rosados.' + '\n\n' +
-        'El lanzamiento busca traer ese entorno a la superficie, celebrando tanto el paisaje como a las personas que lo habitan. Mostramos a la comunidad moviéndose con la naturalidad de quienes conocen cada rincón, como si el espacio fuera parte de ellos.'
+'Gazelle Indoor City Series pays tribute to the landscapes of Puerto Rico: El Yunque, Cabo Rojo, Santurce and Vega Baja.' + '\n\n' +
+        'This silhouette draws inspiration from the landscape of Cabo Rojo, reflected in its pink tones.' + '\n\n' +
+        'The launch seeks to bring that environment to the surface, celebrating both the landscape and the people who inhabit it. We show the community moving with the ease of those who know every corner, as if the space were part of them.'
     } },
   { slug: 'magazine',         title: 'Magazine',         collab: 'Bad Bunny para Messi', client: 'adidas Originals', role: 'Editorial Design',      tone: '#2E4D5C', cover: '', hero: '', gallery: [],
     layout: ['completa 01', 'completa 02', 'completa 03', 'completa 04', 'fila 05 06', 'fila 07 08', 'completa 09'],

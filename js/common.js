@@ -18,7 +18,7 @@
     layout.forEach(function (line) {
       /* Bloque de texto: { texto: ['párrafo 1', 'párrafo 2'] } */
       if (line && line.texto) {
-        out.push({ type: 'text', text: [].concat(line.texto) });
+        out.push({ type: 'text', text: [].concat(line.texto), bg: COLORS[String(line.fondo || '').toLowerCase()] || line.fondo || null });
         return;
       }
       /* Fotos separadas con nombre y lugar: { tarjetas: '03 04', nombres: [...], lugares: [...] } */
