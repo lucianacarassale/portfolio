@@ -95,7 +95,7 @@
   LC.playVideos = function (root) {
     var vids = (root || document).querySelectorAll('video');
     for (var k = 0; k < vids.length; k++) {
-      vids[k].muted = true;
+      if (vids[k].dataset.sound !== 'on') vids[k].muted = true;  /* respeta los que la persona activó */
       var pr = vids[k].play();
       if (pr && pr.catch) pr.catch(function () {});
     }

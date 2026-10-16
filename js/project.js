@@ -111,6 +111,35 @@
   document.querySelector('.p-gallery').innerHTML = html;
   LC.playVideos(document.querySelector('.p-gallery'));
 
+  /* Sonido: los navegadores no dejan que un video arranque solo con audio,
+     así que arrancan en silencio y cada uno tiene un botón "Sound on".
+     Suena uno a la vez: al activar uno, los demás se silencian. */
+  var gVideos = document.querySelectorAll('.p-gallery video');
+  function setSound(v, on) {
+    v.muted = !on;
+    v.dataset.sound = on ? 'on' : 'off';
+    var btn = v.parentNode.querySelector('.sound-btn');
+    if (btn) { btn.textContent = on ? 'Sound off' : 'Sound on'; btn.setAttribute('aria-pressed', on ? 'true' : 'false'); }
+    if (on) {
+      var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+      for (var k = 0; k < gVideos.length; k++) if (gVideos[k] !== v && gVideos[k].dataset.sound === 'on') setSound(gVideos[k], false);
+    }
+  }
+  for (var k = 0; k < gVideos.length; k++) {
+    (function (v) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'sound-btn';
+      btn.textContent = 'Sound on';
+      btn.setAttribute('aria-pressed', 'false');
+      v.parentNode.appendChild(btn);
+      var toggle = function (e) { e.preventDefault(); setSound(v, v.muted); };
+      btn.addEventListener('click', toggle);
+      v.addEventListener('click', toggle);
+      v.style.cursor = 'pointer';
+    })(gVideos[k]);
+  }
+
   /* Siguiente proyecto */
   var nextEl = document.querySelector('.p-next');
   nextEl.classList.toggle('has-info', !!infoHtml);
