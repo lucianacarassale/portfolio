@@ -717,12 +717,26 @@ window.MEDIA = {
     }
   },
   "10": {
-    "cover": "images/projects/10 Bad Bunny para Messi/web/01.jpg",
-    "hero": "images/projects/10 Bad Bunny para Messi/web/01.jpg",
-    "gallery": [],
+    "cover": "images/projects/10 Bad Bunny para Messi/web/01-preview.mp4",
+    "hero": "images/projects/10 Bad Bunny para Messi/web/01.mp4",
+    "gallery": [
+      {
+        "type": "framed",
+        "src": [
+          "images/projects/10 Bad Bunny para Messi/web/02.jpg"
+        ],
+        "ratio": [
+          0.8
+        ]
+      }
+    ],
     "files": {
       "01": {
-        "src": "images/projects/10 Bad Bunny para Messi/web/01.jpg",
+        "src": "images/projects/10 Bad Bunny para Messi/web/01.mp4",
+        "ratio": 1.4545
+      },
+      "02": {
+        "src": "images/projects/10 Bad Bunny para Messi/web/02.jpg",
         "ratio": 0.8
       }
     }
