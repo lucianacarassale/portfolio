@@ -91,7 +91,9 @@
         var W = window.innerWidth, H = window.innerHeight;
         if (W <= 760) { body.style.removeProperty('--u'); body.style.removeProperty('--dx'); body.style.removeProperty('--dy'); return; }
         var t = Math.min(1, Math.max(0, (1.5 - W / H) / (1.5 - 1.1)));
-        var uDesign = W / 100;
+        /* Que entre a lo alto sin scroll: la composición termina en 52.8 unidades y
+           abajo queda el pie de página (unos 60 px) */
+        var uDesign = Math.min(W / 100, (H - 64) / (Y0 + BH));
         var uCentered = Math.min(0.86 * W / BW, 0.7 * (H - 60) / BH);
         var u = uDesign + t * (uCentered - uDesign);
         var left = (1 - t) * X0 * u + t * (W - BW * u) / 2;

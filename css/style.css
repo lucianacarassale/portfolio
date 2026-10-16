@@ -116,6 +116,14 @@ img, video { display: block; max-width: 100%; }
 html:has(body.page-intro) { overflow-x: hidden; } /* al centrar la composición no aparece scroll de costado */
 .page-intro .site-head { position: absolute; top: 0; left: 0; right: 0; }
 .page-intro .home { flex: 1 1 auto; cursor: pointer; }
+/* En computadora el inicio mide exactamente la pantalla: sin scroll */
+@media (min-width: 761px) {
+  .page-intro { height: 100svh; min-height: 0; overflow: hidden; }
+  .page-intro .home { min-height: 0; }
+  .page-intro .home-comp { height: 100%; }
+}
+/* El nombre de arriba a la izquierda, casi transparente en el inicio */
+.page-intro .site-head .logo, .page-intro .site-head .logo:hover { opacity: 0.1; }
 
 /* Composición del inicio. Las medidas salen del diseño (pantalla de 1920 px) en "unidades"
    (--u = 1vw en el diseño). En pantallas cuadradas o verticales un script agranda --u y
