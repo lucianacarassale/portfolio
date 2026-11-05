@@ -38,7 +38,7 @@
   if (cvLink) {
     if (site.cvFile) {
       cvLink.href = encodeURI(site.cvFile);
-      cvLink.setAttribute('download', 'Luciana-Carassale-CV.pdf');  /* nombre con el que se guarda */
+      cvLink.setAttribute('download', 'Luciana-Carassale-Resume.pdf');  /* nombre con el que se guarda */
     } else cvLink.remove();
   }
 
