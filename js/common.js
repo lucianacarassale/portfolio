@@ -83,7 +83,7 @@
   LC.media = function (src, tone, label, cls, alt) {
     var c = 'media' + (cls ? ' ' + cls : '');
     if (src && LC.isVideo(src)) {
-      return '<div class="' + c + '"><video src="' + LC.esc(src) + '" autoplay muted loop playsinline preload="metadata"></video></div>';
+      return '<div class="' + c + '"><video src="' + LC.esc(src) + '" autoplay muted loop playsinline preload="metadata" controlslist="nodownload" disablepictureinpicture disableremoteplayback></video></div>';
     }
     if (src) {
       return '<div class="' + c + '"><img src="' + LC.esc(src) + '" alt="' + LC.esc(alt || '') + '" loading="lazy" decoding="async"></div>';
@@ -139,6 +139,15 @@
   }
   var counts = document.querySelectorAll('[data-count]');
   for (var c = 0; c < counts.length; c++) counts[c].textContent = 'Works [' + (window.PROJECTS || []).length + ']';
+  /* Protección de imágenes y videos: sin menú de "Guardar imagen/video" (clic derecho o
+     mantener apretado en el celular) y sin arrastrarlos. Los links (email, resume) no se tocan. */
+  document.addEventListener('contextmenu', function (e) {
+    if (e.target.closest && e.target.closest('img, video, .media, .hover-bg')) e.preventDefault();
+  });
+  document.addEventListener('dragstart', function (e) {
+    if (e.target.closest && e.target.closest('img, video')) e.preventDefault();
+  });
+
   /* Al hacer clic en el email: se abre el correo (mailto) y además se copia la dirección,
      por si quien visita no tiene una app de correo configurada (ej. usa Gmail en el navegador). */
   document.addEventListener('click', function (e) {
