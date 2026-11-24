@@ -61,12 +61,20 @@
     } else if (b.type === 'pair-bleed') {
       src = src || ['', ''];
       html += '<div class="g-bleed">' + LC.media(src[0], tone(), 'Image — edge to edge') + LC.media(src[1], tone(), 'Image — edge to edge') + '</div>';
+    } else if (b.type === 'air') {
+      /* 'aire 02 16': dos piezas con el mismo aire a la izquierda, en el medio y a la derecha.
+         Pensado para Night Market: el GIF trae un borde transparente propio, que se descuenta. */
+      html += '<div class="g-air">' + [].concat(src).map(function (one, k) {
+        var r = (b.ratio && b.ratio[k]) || 0.8;
+        return '<div class="g-cell" style="flex:' + r + ' 1 0%;aspect-ratio:' + r + '">' + LC.media(one, tone(), 'Image') + '</div>';
+      }).join('') + '</div>';
     } else if (b.type === 'row' || b.type === 'framed') {
       /* Fotos pegadas, todas de la misma altura (el ancho sale de la proporción de cada una) */
       var cells = [].concat(src).map(function (one, k) {
         var r = (b.ratio && b.ratio[k]) || 0.8;
         var cap = b.captions && b.captions[k] ? '<span class="g-caption">' + LC.esc(b.captions[k]) + '</span>' : '';
-        return '<div class="g-cell" style="flex:' + r + ' 1 0%;aspect-ratio:' + r + '">' + LC.media(one, tone(), 'Image') + cap + '</div>';
+        var z = b.zoom && b.zoom[k] > 1 ? ' style="--zoom:' + b.zoom[k] + '"' : '';
+        return '<div class="g-cell' + (z ? ' g-zoom' : '') + '"' + ' style="flex:' + r + ' 1 0%;aspect-ratio:' + r + (z ? ';--zoom:' + b.zoom[k] : '') + '">' + LC.media(one, tone(), 'Image') + cap + '</div>';
       }).join('');
       var style = b.bg ? ' style="background-color:' + LC.esc(b.bg) + '"' : '';
       /* En celular: filas de 4 o más → de a 2; filas que mezclan una horizontal → una debajo de otra */
@@ -77,6 +85,14 @@
       html += b.type === 'row'
         ? '<div class="' + rowCls + '">' + cells + '</div>'
         : '<div class="g-framed"' + style + '><div class="g-row">' + cells + '</div></div>';
+    } else if (b.type === 'centered') {
+      /* Como el GIF de Night Market: cuadro apaisado (16:9) a todo el ancho, con la foto o video centrado */
+      html += '<div class="g-centered' + (b.under ? ' g-centered--over' : '') + '"' + (b.bg ? ' style="background-color:' + LC.esc(b.bg) + '"' : '') + '>' +
+        (b.under ? LC.media(b.under, tone(), 'Image', 'g-under') : '') +
+        [].concat(src).map(function (one, k) {
+          var r = (b.ratio && b.ratio[k]) || 0.8;
+          return '<div class="g-cell" style="aspect-ratio:' + r + '">' + LC.media(one, tone(), 'Image') + '</div>';
+        }).join('') + '</div>';
     } else if (b.type === 'cards') {
       html += '<div class="g-cards">' + b.cards.map(function (c) {
         return '<figure class="g-card">' + LC.media(c.src, tone(), 'Image', '', c.name) +
@@ -89,7 +105,9 @@
     } else if (b.type === 'single') {
       html += '<div class="g-single">' + LC.media(src, tone(), 'Image — single') + '</div>';
     } else {
-      html += LC.media(src, tone(), 'Image or video — full bleed', 'g-full' + (fit ? ' g-fit' : '') + (fit && p.hero === 'none' ? ' g-fit--space' : ''));
+      var full = LC.media(src, tone(), 'Image or video — full bleed', 'g-full' + (b.crop ? ' g-crop' : fit ? ' g-fit' : '') + (fit && !b.crop && p.hero === 'none' ? ' g-fit--space' : ''));
+      if (b.crop) full = full.replace('class="media g-full g-crop"', 'class="media g-full g-crop" style="aspect-ratio:' + b.crop + '"');
+      html += full;
     }
   });
   /* Ficha del proyecto (info en data.js): CAMPAIGN / ROL / AGENCY + descripción.

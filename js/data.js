@@ -48,6 +48,9 @@ window.SITE = {
   Las fotos que no pongas en el layout no se muestran.
   Si el layout usa la 01 (ej: 'fila 01 02'), esa fila reemplaza a la imagen de arriba.
   Para recortar una foto a otra proporción: '01:1.6' (ancho dividido alto; 1.6 = apaisada).
+  'completa 01:1.78'  → a todo el ancho, recortada apaisada (16:9)
+  'centrada 02'       → cuadro blanco 16:9 con la foto o video centrado (como el GIF de Night Market)
+  'centrada 02 sobre 01' → lo mismo, pero con la foto 01 de fondo en vez del blanco
   hero: 'none'        → la 01 queda solo como portada de la grilla, adentro no aparece
   layoutMobile: [...] → otro orden solo para celular (mismo formato que layout)
   bg: '#1A1A1A'       → color de fondo de la página del proyecto
@@ -106,8 +109,8 @@ window.PROJECTS = [
       text: 
         'adidas Originals, Bad Bunny, and the Mercedes-AMG PETRONAS F1 Team announce the launch of the Bad Bunny Adiracer GT and the debut of the Bad Bunny Motorsport Collection, building on the historic partnership that brought Formula 1 to Puerto Rico for the first time.'
     } },
-  { slug: 'night-market',     title: 'Night Market',     collab: 'Edison Chen',          client: 'adidas Originals', role: 'Activation design',     tone: '#26324F', cover: '', hero: '', gallery: [],
-    layout: ['fila 01:1.6 02', 'fila 03 04 05 06', 'fila 07:0.8 08 09 10', 'fila 11 12 13 14'],
+  { slug: 'night-market',     title: 'Night Market',     collab: 'Edison Chen',          client: 'adidas Originals', role: 'Activation design',     tone: '#26324F', cover: '', gallery: [],
+    layout: ['completa 01:1.78', 'aire 02 16'],
     info: {
       campaign: 'Mama\'s Nightmarket',
       year: '2026',

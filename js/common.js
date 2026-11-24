@@ -11,7 +11,7 @@
   LC.num = function (i) { return String(i + 1).padStart(2, '0'); };
 
   /* "layout" de data.js → bloques de galería. Ej: 'fila 03 04', 'enmarcada 05 negro' */
-  var TYPES = { completa: 'full', fila: 'row', enmarcada: 'framed' };
+  var TYPES = { completa: 'full', fila: 'row', enmarcada: 'framed', centrada: 'centered', aire: 'air' };
   var COLORS = { negro: '#000000', blanco: '#FFFFFF' };
   LC.fromLayout = function (layout, files) {
     var out = [];
@@ -40,17 +40,28 @@
       var words = String(line).trim().split(/\s+/);
       var type = TYPES[words[0].toLowerCase()];
       if (!type) return;
-      var srcs = [], ratios = [], bg = null;
+      var srcs = [], ratios = [], zooms = [], bg = null, under = null;
+      /* 'centrada 02 sobre 01' → la 02 centrada encima de la 01, que va de fondo */
+      var si = words.indexOf('sobre');
+      if (si > 0 && words[si + 1]) {
+        var uf = files[words[si + 1].padStart(2, '0')];
+        if (uf) under = uf.src;
+        words = words.slice(0, si);
+      }
       words.slice(1).forEach(function (w) {
-        /* "05" = foto 05 · "05:1.6" = foto 05 recortada a esa proporción (ancho / alto) */
-        var m = /^(\d+)(?::([\d.]+))?$/.exec(w);
+        /* "05" = foto 05 · "05:1.6" = recortada a esa proporción (ancho / alto)
+           · "05:0.85*1.26" = además, agrandada 1.26 veces desde el centro (para recortar bordes) */
+        var m = /^(\d+)(?::([\d.]+))?(?:\*([\d.]+))?$/.exec(w);
         var f = m && files[m[1].padStart(2, '0')];
-        if (f) { srcs.push(f.src); ratios.push(m[2] ? +m[2] : f.ratio); }
+        if (f) { srcs.push(f.src); ratios.push(m[2] ? +m[2] : f.ratio); zooms.push(m[3] ? +m[3] : 1); }
         else if (COLORS[w.toLowerCase()] || /^#[0-9a-f]{3,8}$/i.test(w)) bg = COLORS[w.toLowerCase()] || w;
       });
       if (!srcs.length) return;
-      if (type === 'full') srcs.forEach(function (s) { out.push({ type: 'full', src: s }); });
-      else out.push({ type: type, src: srcs, ratio: ratios, bg: bg, captions: captions });
+      /* 'completa 01:1.78' → a todo el ancho, recortada a esa proporción */
+      if (type === 'full') srcs.forEach(function (s, k) {
+        out.push({ type: 'full', src: s, crop: /:/.test(words[k + 1] || '') ? ratios[k] : null });
+      });
+      else out.push({ type: type, src: srcs, ratio: ratios, zoom: zooms, bg: bg, captions: captions, under: under });
     });
     return out;
   };

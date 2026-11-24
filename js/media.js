@@ -274,6 +274,19 @@ window.MEDIA = {
           0.75,
           0.8
         ]
+      },
+      {
+        "type": "full",
+        "src": "images/projects/04 Night Market - Edison Chen/web/15.gif"
+      },
+      {
+        "type": "framed",
+        "src": [
+          "images/projects/04 Night Market - Edison Chen/web/16.gif"
+        ],
+        "ratio": [
+          0.788
+        ]
       }
     ],
     "files": {
@@ -332,6 +345,14 @@ window.MEDIA = {
       "14": {
         "src": "images/projects/04 Night Market - Edison Chen/web/14.jpg",
         "ratio": 0.8
+      },
+      "15": {
+        "src": "images/projects/04 Night Market - Edison Chen/web/15.gif",
+        "ratio": 1.7778
+      },
+      "16": {
+        "src": "images/projects/04 Night Market - Edison Chen/web/16.gif",
+        "ratio": 0.788
       }
     }
   },
